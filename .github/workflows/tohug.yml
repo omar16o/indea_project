@@ -8,22 +8,17 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
 
       - name: Push to Hugging Face Space
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          git config --global user.email "actions@github.com"
-          git config --global user.name "GitHub Actions"
-          git remote add hf https://omar20forcrisises:$HF_TOKEN@huggingface.co/spaces/omar20forcrisises/india_project
-
-          git clone https://omar20forcrises:$HF_TOKEN@huggingface.co/spaces/omar20forcrises/india_project hf_space
-          rsync -av --exclude='.git' ./ hf_space/
-          cd hf_space
-          git add .
-          git commit -m "Auto deploy from GitHub" || echo "No changes to commit"
-          git push --force
+          # 1. Force push directly to the HF remote
+          # Using 'omar20forcrisises' as the verified username
+          git push --force https://omar20forcrises:$HF_TOKEN@huggingface.co/spaces/omar20forcrises/india_project main
