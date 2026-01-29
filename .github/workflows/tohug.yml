@@ -19,6 +19,7 @@ jobs:
         run: |
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
+          git remote add hf https://omar20forcrisises:$HF_TOKEN@huggingface.co/spaces/omar20forcrisises/india_project
 
           git clone https://omar20forcrises:$HF_TOKEN@huggingface.co/spaces/omar20forcrises/india_project hf_space
           rsync -av --exclude='.git' ./ hf_space/
