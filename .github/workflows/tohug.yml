@@ -26,4 +26,4 @@ jobs:
           cd hf_space
           git add .
           git commit -m "Auto deploy from GitHub" || echo "No changes to commit"
-          git push
+          git push --force
