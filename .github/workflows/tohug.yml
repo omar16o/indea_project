@@ -19,6 +19,5 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          # 1. Force push directly to the HF remote
-          # Using 'omar20forcrisises' as the verified username
+          # Use the verified username from your screenshot: omar20forcrisises
           git push --force https://omar20forcrises:$HF_TOKEN@huggingface.co/spaces/omar20forcrises/india_project main
